@@ -3,37 +3,92 @@
 **Nama**        : Ian Jullian Sutrisno  
 **NIM**         : H1D024039  
 **Shift**       : Awal I / Akhir C  
-**Praktikum**   : Pemrograman Mobile  
-
-**Modul**       : Modul 2 — Pengenalan dan Desain Framework Flutter
+**Praktikum**   : Pemrograman Mobile
 
 ---
 
 ## 📝 Tugas Pertemuan 6
 
-**Tanggal**: Selasa, 6 Oktober 2026
+**Tanggal**: Selasa, 27 Oktober 2026
 
-**Materi**: Hello World pada Flutter
+**Modul**: Modul 2 — Pengenalan dan Desain Framework Flutter
 
-### Implementasi
+### 1. Hello World pada Flutter
 
-Pada pertemuan keenam, aplikasi Hello World dibuat menggunakan framework Flutter dan bahasa pemrograman Dart. Implementasi mengikuti contoh pada Modul 2 dengan menggunakan widget dasar berikut:
+Pada bagian ini, aplikasi sederhana dibuat menggunakan framework Flutter dengan bahasa pemrograman Dart. Implementasi menggunakan `StatelessWidget` sebagai widget induk, `MaterialApp` sebagai pembungkus aplikasi, `Scaffold` sebagai struktur dasar halaman, `AppBar` untuk menampilkan judul halaman, serta `Center` dan `Text` untuk menampilkan tulisan Hello World.
 
-- `MyApp` sebagai widget induk yang menggunakan `StatelessWidget`.
-- `MaterialApp` sebagai pembungkus aplikasi.
-- `Scaffold` sebagai struktur dasar halaman.
-- `AppBar` untuk menampilkan judul halaman.
-- `Center` untuk menempatkan widget di tengah halaman.
-- `Text` untuk menampilkan tulisan Hello World.
+Implementasi awal dibuat pada file `lib/main.dart`.
 
-Kode implementasi dibuat pada file `lib/main.dart` dan dijalankan pada perangkat Android melalui Visual Studio Code.
+![Hasil Praktikum Hello World](HelloWorld.jpeg)
 
-### Hasil Praktikum
+### 2. Bekerja dengan Beberapa File Dart
 
-Aplikasi berhasil dijalankan pada HP Android V2204.
+Untuk mempermudah pembacaan dan pemeliharaan kode, implementasi halaman dipisahkan menjadi beberapa file Dart.
 
-![Hasil Praktikum Pertemuan 6](HelloWorld.jpeg)
+Pembagian file yang digunakan adalah:
+
+- `lib/main.dart`: berisi fungsi `main()` dan kelas `MyApp` yang menjalankan aplikasi melalui `MaterialApp`.
+- `lib/hello_world.dart`: berisi kelas `HelloWorld` yang menampilkan halaman menggunakan `Scaffold`, `AppBar`, `Center`, dan `Text`.
+
+Kelas `HelloWorld` dipanggil melalui properti `home` pada `MaterialApp`. Pemisahan ini tidak mengubah tampilan aplikasi, tetapi membuat kode lebih terstruktur.
+
+### 3. Kolom pada Flutter
+
+Widget `Column` digunakan untuk menyusun beberapa widget secara vertikal. Implementasi dibuat pada file `lib/column_widget.dart` menggunakan kelas `ColumnWidget` dengan empat widget `Text`, yaitu Kolom 1, Kolom 2, Kolom 3, dan Kolom 4.
+
+Halaman menggunakan `Scaffold` dan `AppBar` dengan judul **Widget Column**.
+
+![Hasil Praktikum Column](KolomView.jpeg)
+
+### 4. Membuat Row pada Flutter
+
+Widget `Row` digunakan untuk menampilkan beberapa widget secara horizontal. Implementasi dibuat pada file `lib/row_widget.dart` menggunakan kelas `RowWidget` yang menampilkan Row 1, Row 2, Row 3, dan Row 4.
+
+Halaman menggunakan `Scaffold` dan `AppBar` dengan judul **Widget Row**.
+
+![Hasil Praktikum Row](RowView.jpeg)
+
+### 5. Membuat Form Produk
+
+Form Produk dibuat di dalam folder `lib/ui` menggunakan `StatefulWidget`, `TextEditingController`, `TextField`, dan `ElevatedButton`.
+
+Form terdiri atas tiga masukan, yaitu kode produk, nama produk, dan harga. Ketika tombol **Simpan** ditekan, data yang dimasukkan diteruskan ke halaman detail menggunakan `Navigator` dan `MaterialPageRoute`.
+
+File implementasi yang digunakan:
+
+- `lib/ui/produk_form.dart`: menampilkan form input produk.
+- `lib/ui/produk_detail.dart`: menampilkan detail produk berdasarkan data yang dimasukkan.
+
+**Tampilan Form Produk**
+
+![Tampilan Form Produk](FormProdukView.jpeg)
+
+**Tampilan Form Produk Alternatif**
+
+![Tampilan Form Produk Alternatif](FormProdukView%20%281%29.jpeg)
+
+**Hasil Detail Produk**
+
+![Hasil Detail Produk](DetailProdukView.jpeg)
+
+### 6. Membuat ListView pada Flutter
+
+Widget `ListView` digunakan untuk menampilkan daftar produk secara vertikal. Implementasi dibuat pada file `lib/ui/produk_page.dart` menggunakan `StatefulWidget`, `ListView`, `Card`, dan `ListTile`.
+
+Daftar produk yang ditampilkan terdiri atas tiga data berikut:
+
+| Nama Produk | Harga |
+|---|---:|
+| Kulkas | 300000 |
+| Playstation | 300000 |
+| Radio | 300000 |
+
+Halaman menggunakan judul **List Data Produk**. Setiap data produk ditampilkan dalam kartu yang berisi nama produk dan harga sebagai subtitle.
+
+![Hasil ListView Produk](ListDataProdukView.jpeg)
 
 ### Kesimpulan Praktikum
 
-Pada pertemuan keenam, praktikum memberikan pemahaman dasar mengenai pembuatan antarmuka aplikasi menggunakan Flutter. Mahasiswa mempelajari penggunaan `StatelessWidget`, `MaterialApp`, `Scaffold`, `AppBar`, `Center`, dan `Text` untuk membangun tampilan sederhana. Praktikum juga memberikan pengalaman menjalankan aplikasi Flutter melalui Visual Studio Code pada perangkat Android.
+Pada Pertemuan 6, praktikum Modul 2 memberikan pemahaman mengenai penggunaan framework Flutter untuk membangun antarmuka aplikasi. Materi yang dipraktikkan meliputi pembuatan aplikasi Hello World, pemisahan kode menjadi beberapa file Dart, penyusunan widget menggunakan `Column` dan `Row`, pembuatan form produk beserta halaman detail, serta penyajian daftar produk menggunakan `ListView`, `Card`, dan `ListTile`.
+
+Implementasi dikerjakan menggunakan Visual Studio Code dengan bahasa pemrograman Dart dan diuji pada perangkat Android. Praktikum ini membantu memahami struktur dasar proyek Flutter, penggunaan widget, serta pengolahan input dan penampilan data sederhana.
