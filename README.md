@@ -63,7 +63,7 @@ File implementasi yang digunakan:
 
 ![Tampilan Form Produk](FormProdukView.jpeg)
 
-**Tampilan Form Produk Alternatif**
+**Tampilan Form Produk Input**
 
 ![Tampilan Form Produk Alternatif](FormProdukView2.jpeg)
 
