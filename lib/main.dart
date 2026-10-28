@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'hello_world.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,14 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         useMaterial3: false,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Belajar Flutter'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      home: const HelloWorld(),
     );
   }
 }
