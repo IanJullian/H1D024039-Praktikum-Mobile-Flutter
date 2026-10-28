@@ -65,7 +65,7 @@ File implementasi yang digunakan:
 
 **Tampilan Form Produk Alternatif**
 
-![Tampilan Form Produk Alternatif](FormProdukView%20%281%29.jpeg)
+![Tampilan Form Produk Alternatif](FormProdukView2.jpeg)
 
 **Hasil Detail Produk**
 
