@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'hello_world.dart';
+import 'package:belajarflutter/column_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         useMaterial3: false,
       ),
-      home: const HelloWorld(),
+      home: const ColumnWidget(),
     );
   }
 }
