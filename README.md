@@ -19,7 +19,7 @@ Pada bagian ini, aplikasi sederhana dibuat menggunakan framework Flutter dengan 
 
 Implementasi awal dibuat pada file `lib/main.dart`.
 
-![Hasil Praktikum Hello World](HelloWorld.jpeg)
+<img src="HelloWorld.jpeg" width="250" />
 
 ### 2. Bekerja dengan Beberapa File Dart
 
@@ -38,7 +38,7 @@ Widget `Column` digunakan untuk menyusun beberapa widget secara vertikal. Implem
 
 Halaman menggunakan `Scaffold` dan `AppBar` dengan judul **Widget Column**.
 
-![Hasil Praktikum Column](KolomView.jpeg)
+<img src="KolomView.jpeg" width="250" />
 
 ### 4. Membuat Row pada Flutter
 
@@ -46,7 +46,7 @@ Widget `Row` digunakan untuk menampilkan beberapa widget secara horizontal. Impl
 
 Halaman menggunakan `Scaffold` dan `AppBar` dengan judul **Widget Row**.
 
-![Hasil Praktikum Row](RowView.jpeg)
+<img src="RowView.jpeg" width="250" />
 
 ### 5. Membuat Form Produk
 
@@ -61,15 +61,15 @@ File implementasi yang digunakan:
 
 **Tampilan Form Produk**
 
-![Tampilan Form Produk](FormProdukView.jpeg)
+<img src="FormProdukView.jpeg" width="250" />
 
 **Tampilan Form Produk Input**
 
-![Tampilan Form Produk Alternatif](FormProdukView2.jpeg)
+<img src="FormProdukView2.jpeg" width="250" />
 
 **Hasil Detail Produk**
 
-![Hasil Detail Produk](DetailProdukView.jpeg)
+<img src="DetailProdukView.jpeg" width="250" />
 
 ### 6. Membuat ListView pada Flutter
 
@@ -85,7 +85,7 @@ Daftar produk yang ditampilkan terdiri atas tiga data berikut:
 
 Halaman menggunakan judul **List Data Produk**. Setiap data produk ditampilkan dalam kartu yang berisi nama produk dan harga sebagai subtitle.
 
-![Hasil ListView Produk](ListDataProdukView.jpeg)
+<img src="ListDataProdukView.jpeg" width="250" />
 
 ### Kesimpulan Praktikum
 
