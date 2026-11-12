@@ -46,3 +46,13 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+@"
+/Closing.mp4
+/Detailscreen Pokedex.jpeg
+/Hello World view.jpeg
+/Homescreen Pokedex.jpeg
+/Perkenalan diri.mp4
+/Responsi Praktikum Pemrograman Mobile Shift C.pdf
+/Search Pokedex.jpeg
+"@ | Add-Content .gitignore
