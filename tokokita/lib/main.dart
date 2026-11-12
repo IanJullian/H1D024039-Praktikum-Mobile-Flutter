@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tokokita/ui/registrasi_page.dart';
+import 'package:tokokita/ui/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      home: const RegistrasiPage(),
+      home: const LoginPage(),
     );
   }
 }
