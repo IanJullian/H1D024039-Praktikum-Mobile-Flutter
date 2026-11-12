@@ -9,7 +9,7 @@
 
 ## 📝 Tugas Pertemuan 7
 
-**Tanggal**: Kamis, 12 November 2026
+**Tanggal**: Selasa, 2 November 2026
 
 **Modul**: Modul 3 — Routes, Side Menu, Login dan Local Storage
 
