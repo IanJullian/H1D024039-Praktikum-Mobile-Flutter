@@ -56,3 +56,4 @@ app.*.map.json
 /Responsi Praktikum Pemrograman Mobile Shift C.pdf
 /Search Pokedex.jpeg
 "@ | Add-Content .gitignore
+/login page.jpeg
