@@ -116,7 +116,7 @@ class _ProdukPageState extends State<ProdukPage> {
             return const Center(child: Text('Belum ada data produk'));
           }
 
-          return ListProduk(list: produks);
+          return ListProduk(list: produks, onChanged: _refreshProduk);
         },
       ),
     );
@@ -125,15 +125,16 @@ class _ProdukPageState extends State<ProdukPage> {
 
 class ListProduk extends StatelessWidget {
   final List<Produk> list;
+  final VoidCallback onChanged;
 
-  const ListProduk({super.key, required this.list});
+  const ListProduk({super.key, required this.list, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: list.length,
       itemBuilder: (context, i) {
-        return ItemProduk(produk: list[i]);
+        return ItemProduk(produk: list[i], onChanged: onChanged);
       },
     );
   }
@@ -141,17 +142,22 @@ class ListProduk extends StatelessWidget {
 
 class ItemProduk extends StatelessWidget {
   final Produk produk;
+  final VoidCallback onChanged;
 
-  const ItemProduk({super.key, required this.produk});
+  const ItemProduk({super.key, required this.produk, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
+      onTap: () async {
+        final result = await Navigator.push<bool>(
           context,
           MaterialPageRoute(builder: (context) => ProdukDetail(produk: produk)),
         );
+
+        if (result == true) {
+          onChanged();
+        }
       },
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
