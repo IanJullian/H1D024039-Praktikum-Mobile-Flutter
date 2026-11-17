@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tokokita/ui/registrasi_page.dart';
+import 'package:tokokita/bloc/login_bloc.dart';
+import 'package:tokokita/helpers/user_info.dart';
+import 'package:tokokita/ui/produk_page.dart';
+import 'package:tokokita/widget/warning_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,6 +14,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  bool _isLoading = false;
 
   final _emailTextboxController = TextEditingController();
   final _passwordTextboxController = TextEditingController();
@@ -79,11 +84,73 @@ class _LoginPageState extends State<LoginPage> {
   // Membuat Tombol Login
   Widget _buttonLogin() {
     return ElevatedButton(
-      onPressed: () {
-        _formKey.currentState!.validate();
-      },
-      child: const Text("Login"),
+      onPressed: _isLoading
+          ? null
+          : () {
+              if (_formKey.currentState!.validate()) {
+                _submit();
+              }
+            },
+      child: _isLoading
+          ? const SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(strokeWidth: 2),
+            )
+          : const Text('Login'),
     );
+  }
+
+  Future<void> _submit() async {
+    _formKey.currentState!.save();
+
+    FocusScope.of(context).unfocus();
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final value = await LoginBloc.login(
+        email: _emailTextboxController.text,
+        password: _passwordTextboxController.text,
+      );
+
+      final token = value.token?.toString();
+      final userID = int.tryParse(value.userID.toString());
+
+      if (token == null || token.isEmpty || userID == null) {
+        throw Exception('Token atau ID pengguna tidak valid');
+      }
+
+      await UserInfo().setToken(token);
+      await UserInfo().setUserID(userID);
+
+      if (!mounted) return;
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const ProdukPage()),
+      );
+    } catch (error) {
+      debugPrint('Login gagal: $error');
+
+      if (!mounted) return;
+
+      await showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        builder: (dialogContext) => const WarningDialog(
+          description: 'Login gagal, silahkan periksa email dan password.',
+        ),
+      );
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
   }
 
   // Menu untuk membuka halaman Registrasi
