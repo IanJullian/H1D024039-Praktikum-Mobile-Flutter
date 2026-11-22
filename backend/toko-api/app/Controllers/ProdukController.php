@@ -8,14 +8,50 @@ class ProdukController extends RestfulController
     // Menambahkan produk
     public function create()
     {
+        $harga = filter_var(
+            $this->request->getPost('harga'),
+            FILTER_VALIDATE_INT
+        );
+
         $data = [
-            'kode_produk' => $this->request->getVar('kode_produk'),
-            'nama_produk' => $this->request->getVar('nama_produk'),
-            'harga' => $this->request->getVar('harga')
+            'kode_produk' => trim(
+                (string) ($this->request->getPost('kode_produk') ?? '')
+            ),
+            'nama_produk' => trim(
+                (string) ($this->request->getPost('nama_produk') ?? '')
+            ),
+            'harga' => $harga
         ];
 
+        // Validasi input sebelum disimpan.
+        if (
+            $data['kode_produk'] === '' ||
+            $data['nama_produk'] === '' ||
+            $harga === false ||
+            $harga <= 0
+        ) {
+            return $this->response
+                ->setStatusCode(422)
+                ->setJSON([
+                    'code' => 422,
+                    'status' => false,
+                    'data' => ['message' => 'Data produk tidak valid']
+                ]);
+        }
+
         $model = new MProduk();
-        $model->insert($data);
+        $insert = $model->insert($data);
+
+        if ($insert === false) {
+            return $this->response
+                ->setStatusCode(500)
+                ->setJSON([
+                    'code' => 500,
+                    'status' => false,
+                    'data' => ['message' => 'Gagal menyimpan produk']
+                ]);
+        }
+
         $produk = $model->find($model->getInsertID());
 
         return $this->responseHasil(200, true, $produk);
@@ -42,13 +78,51 @@ class ProdukController extends RestfulController
     // Mengubah produk
     public function ubah($id)
     {
+        // Membaca data dari request PUT.
+        $input = $this->request->getRawInput();
+
+        $harga = filter_var(
+            $input['harga'] ?? null,
+            FILTER_VALIDATE_INT
+        );
+
         $data = [
-            'kode_produk' => $this->request->getVar('kode_produk'),
-            'nama_produk' => $this->request->getVar('nama_produk'),
-            'harga' => $this->request->getVar('harga')
+            'kode_produk' => trim(
+                (string) ($input['kode_produk'] ?? '')
+            ),
+            'nama_produk' => trim(
+                (string) ($input['nama_produk'] ?? '')
+            ),
+            'harga' => $harga
         ];
 
+        if (
+            $data['kode_produk'] === '' ||
+            $data['nama_produk'] === '' ||
+            $harga === false ||
+            $harga <= 0
+        ) {
+            return $this->response
+                ->setStatusCode(422)
+                ->setJSON([
+                    'code' => 422,
+                    'status' => false,
+                    'data' => ['message' => 'Data produk tidak valid']
+                ]);
+        }
+
         $model = new MProduk();
+
+        if (!$model->find($id)) {
+            return $this->response
+                ->setStatusCode(404)
+                ->setJSON([
+                    'code' => 404,
+                    'status' => false,
+                    'data' => ['message' => 'Produk tidak ditemukan']
+                ]);
+        }
+
         $model->update($id, $data);
         $produk = $model->find($id);
 
